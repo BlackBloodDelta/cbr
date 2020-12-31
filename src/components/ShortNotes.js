@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 
-function Notes() {
+function ShortNotes() {
     const [ responsible, setResponsible ] = useState('');
     const [ date, setDate ] = useState('0000-00-00');
     const [ description, setDescription ] = useState('');
@@ -89,48 +89,27 @@ function Notes() {
     return (
         <section>
             <div className="content">
-                <div className="cadContainer">
-                    <h2>New Note Register</h2>
+                {/*<div className="cadContainer">*/}
+                {/*    <h2>New Note Register</h2>*/}
 
-                    <label>Responsible</label>
-                    <input type="text" autoFocus required value={responsible} onChange={(e) => setResponsible(e.target.value)}/>
+                {/*    <label>Responsible</label>*/}
+                {/*    <input type="text" autoFocus required value={responsible} onChange={(e) => setResponsible(e.target.value)}/>*/}
 
-                    <label>Date</label>
-                    <input type="date" required value={date} onChange={(e) => setDate(e.target.value)}/>
+                {/*    <label>Date</label>*/}
+                {/*    <input type="date" required value={date} onChange={(e) => setDate(e.target.value)}/>*/}
 
-                    <label>Description</label>
-                    <textarea value={description} onChange={(e) => setDescription(e.target.value)}/>
+                {/*    <label>Description</label>*/}
+                {/*    <textarea value={description} onChange={(e) => setDescription(e.target.value)}/>*/}
 
-                    <div className="btnContainer">
-                        <button onClick={addNote}>Save</button>
-                        <label>{err}</label>
-                    </div>
-                    <h4>Registered Notes down below... Scroll down the page</h4>
-                </div>
+                {/*    <div className="btnContainer">*/}
+                {/*        <button onClick={addNote}>Save</button>*/}
+                {/*        <label>{err}</label>*/}
+                {/*    </div>*/}
+                {/*    <h4>Registered ShortNotes down below... Scroll down the page</h4>*/}
+                {/*</div>*/}
 
                 <div className="grid">
                     <Note data={notes} />
-                </div>
-
-                {/*Modal Template*/}
-                <div>
-                    <Modal
-                        aria-labelledby="transition-modal-title"
-                        aria-describedby="transition-modal-description"
-                        className={classes.modal}
-                        open={open}
-                        onClose={handleClose}
-                        closeAfterTransition
-                        BackdropComponent={Backdrop}
-                        BackdropProps={{
-                            timeout: 500,
-                        }}
-                    >
-                        <div className={classes.paper}>
-                            <h2 id="transition-modal-title">New note Saved!</h2>
-                            <p id="transition-modal-description">You can just click anywhere outside me to close.</p>
-                        </div>
-                    </Modal>
                 </div>
             </div>
         </section>
@@ -138,4 +117,4 @@ function Notes() {
 
 }
 
-export default Notes;
+export default ShortNotes;

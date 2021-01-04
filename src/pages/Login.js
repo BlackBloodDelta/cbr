@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { auth } from "../components/Fire";
+import fire from "../components/Fire";
 
 const Login = () => {
 
@@ -23,7 +23,7 @@ const Login = () => {
     const handleLogin = () => {
         clearErrors();
 
-        auth
+        fire.auth()
             .signInWithEmailAndPassword(email, password)
             .catch(err => {
                 switch (err.code) {
@@ -46,7 +46,7 @@ const Login = () => {
     const handleSignUp = () => {
         clearErrors();
 
-        auth
+        fire.auth()
             .createUserWithEmailAndPassword(email, password)
             .catch(err => {
                 switch (err.code) {
@@ -66,11 +66,11 @@ const Login = () => {
     };
 
     const handleLogOut = () => {
-        auth.signOut();
+        fire.auth().signOut();
     };
 
     const authListener = () => {
-        auth.onAuthStateChanged((user) => {
+        fire.auth().onAuthStateChanged((user) => {
             if (user) {
                 clearInputs();
                 setUser(user);

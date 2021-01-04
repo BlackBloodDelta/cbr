@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Header() {
+export default function Header({handleLogout, user}) {
     return (
         <nav>
             <div className={"logo"}>
@@ -15,9 +15,14 @@ export default function Header() {
                 <button>
                     <HeaderNavItem to="/blog" name="Blog" />
                 </button>
-                <button>
-                    <HeaderNavItem to="/login" name="Login" />
-                </button>
+                {user ?
+                    <button onClick={handleLogout}>Logout</button>
+                :
+                    <button>
+                        <HeaderNavItem to="/login" name="Login" />
+                    </button>
+                }
+
             </div>
         </nav>
     );

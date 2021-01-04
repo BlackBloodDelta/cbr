@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { default, auth } from "../components/Fire";
+import { auth } from "../components/Fire";
 
 const Login = () => {
 

@@ -88,7 +88,7 @@ function App() {
 
     useEffect(() => {
         authListener();
-    }, [])
+    })
 
     return (
         <Router>

@@ -115,7 +115,7 @@ button {
 nav {
     background: #603bbb;
     width: 100%;
-    padding: 0 40px;
+    padding: 10px 40px;
     display: flex;
     align-items: center;
 }
@@ -163,11 +163,11 @@ nav a:hover {
     color: #cacaca;
 }
 
-.hero .cadContainer {
+.content .cadContainer {
     display: flex;
     padding: 60px;
     margin: 10%;
-    max-width: 520px;
+    /*max-width: 520px;*/
     min-height: 600px;
     flex-direction: column;
     justify-content: center;
@@ -180,13 +180,13 @@ nav a:hover {
     box-shadow: 0 50px 70px -20px rgba(0, 0, 0, 0.8);
 }
 
-.hero .cadContainer h2 {
+.content .cadContainer h2 {
     color: white;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.hero .cadContainer label {
+.content .cadContainer label {
     color: white;
     margin: 14px 0;
     display: block;
@@ -194,7 +194,7 @@ nav a:hover {
     line-height: 1;
 }
 
-.hero .cadContainer input {
+.content .cadContainer input {
     width: 100%;
     border: none;
     outline: none;
@@ -205,7 +205,7 @@ nav a:hover {
     letter-spacing: 1px;
 }
 
-.hero .cadContainer textarea {
+.content .cadContainer textarea {
     width: 100%;
     border: none;
     outline: none;
@@ -216,18 +216,18 @@ nav a:hover {
     letter-spacing: 1px;
 }
 
-.hero .cadContainer .btnContainer {
+.content .cadContainer .btnContainer {
     width: 100%;
     padding: 24px 0;
 }
 
-.hero .cadContainer .btnContainer p {
+.content .cadContainer .btnContainer p {
     margin: 14px 0 0 0;
     text-align: right;
     color: #fff;
 }
 
-.hero .cadContainer .btnContainer p span {
+.content .cadContainer .btnContainer p span {
     color: yellow;
     font-weight: 500;
     letter-spacing: 0.5px;
@@ -236,45 +236,52 @@ nav a:hover {
     transition: all 400ms ease-in-out;
 }
 
-.hero .cadContainer .btnContainer p span:hover {
+.content .cadContainer .btnContainer p span:hover {
     color: red;
 }
 
-.hero .cadContainer .errorMsg {
+.content .cadContainer .errorMsg {
     color: red;
     font-size: 16px;
 }
 
-.hero .grid {
-    min-height: 100%;
-    margin: 10% 10% 0 10%;
-    color: white;
+.blog {
+    margin: auto;
+    width: 60%;
 }
 
 .blog a:hover h1{
     color: aqua;
 
+
 }
 
 .blog .post-listing {
-    padding: 50px;
-    margin: 40px ;
+    padding: 0 40px;
+    margin: 40px;
     color: #000;
-    /*background-color: #603bbb;*/
-    border-radius: 20px;
-    border: #3a2b58 2px;
-
-    -webkit-box-shadow: 0 15px 30px 2px rgba(0,0,0,0.44);
-    -moz-box-shadow: 0 15px 30px 2px rgba(0,0,0,0.44);
-    box-shadow: 0 15px 30px 2px rgba(0,0,0,0.44);
 }
 
-.blog .post-listing h4{
-    color: black;
+.blog .post-listing .tag {
+    color: #4e27ba;
+    font-weight: bolder;
+}
+
+.blog .post-listing h1{
+    font-size: 24px;
+}
+
+.blog .post-listing h5{
+    font-size: 16px;
 }
 
 .blog .post-listing button a{
     color: white;
+    font-size: 13px !important;
+}
+
+.blog .post-listing button {
+    font-size: 13px !important;
 }
 
 .blog .post-listing button:hover{
@@ -291,11 +298,6 @@ nav a:hover {
     width: 80%;
     margin: 50px auto;
     padding: 40px;
-
-    border-radius: 10px;
-    -webkit-box-shadow: 0 11px 30px 2px rgba(0,0,0,0.44);
-    -moz-box-shadow: 0 11px 30px 2px rgba(0,0,0,0.44);
-    box-shadow: 0 11px 30px 2px rgba(0,0,0,0.44);
 }
 
 .post-content-view h1 {
@@ -314,4 +316,20 @@ nav a:hover {
     display: block;
     text-align: justify;
     margin-bottom: 20px;
+}
+
+.spacer {
+    padding: 40px 0 0;
+}
+
+@media only screen and (min-width: 768px) {
+    /* tablets and desktop */
+}
+
+@media only screen and (max-width: 767px) {
+    /* phones */
+
+    .blog {
+        width: 100%;
+    }
 }

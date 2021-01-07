@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import firebase from "firebase";
-import {makeStyles} from "@material-ui/core/styles";
+import { Editor } from "@tinymce/tinymce-react";
 
-export default function PostCad() {
+export default function PostCad({user}) {
 
     const [ title, setTitle ] = useState('');
     const [ subtitle, setSubtitle ] = useState('');
@@ -19,11 +19,10 @@ export default function PostCad() {
         if (title.length > 0 && subtitle.length > 0 && call.length > 0 && author.length > 0 && date.length > 0 && article.length > 0){
             await ref.add({
                 title: title,
-                subtitle: subtitle,
                 call: call,
                 author: author,
                 date: date,
-                article: article,
+                article: ""+article+"",
             });
             setTitle('');
             setSubtitle('');
@@ -31,8 +30,9 @@ export default function PostCad() {
             setAuthor('');
             setDate('');
             setArticle('');
+            window.location.href = "/blog";
         } else {
-            setErr('All the camps must be filled');
+            setErr('Todos os campos devem ser preenchidos.');
         }
 
     }
@@ -47,19 +47,36 @@ export default function PostCad() {
                     <input type="text" autoFocus required value={title} onChange={(e) => setTitle(e.target.value)}/>
 
                     <label>Sub Título</label>
-                    <input type="text" autoFocus required value={subtitle} onChange={(e) => setSubtitle(e.target.value)}/>
+                    <input type="text" required value={subtitle} onChange={(e) => setSubtitle(e.target.value)}/>
 
                     <label>Chamada para o Post</label>
-                    <input type="text" autoFocus required value={call} onChange={(e) => setCall(e.target.value)}/>
+                    <input type="text" required value={call} onChange={(e) => setCall(e.target.value)}/>
 
                     <label>Autor</label>
-                    <input type="text" autoFocus required value={author} onChange={(e) => setAuthor(e.target.value)}/>
+                    <input type="text" required value={author} onChange={(e) => setAuthor(e.target.value)}/>
 
                     <label>Data</label>
-                    <input type="date" required value={date} onChange={(e) => setDate(e.target.value)}/>
+                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
 
                     <label>Escreva aqui o post</label>
-                    <textarea value={article} onChange={(e) => setArticle(e.target.value)}/>
+                    <Editor
+                        apiKey="6i704em5efcj6vdsiaq7iz2n3afntdc06nqscj2cugn9ky31"
+                        initialValue="<p>Initial content</p>"
+                        init={{
+                            height: 500,
+                            menubar: true,
+                            plugins: [
+                                'advlist autolink lists link image',
+                                'charmap print preview anchor help',
+                                'searchreplace visualblocks code',
+                                'insertdatetime media table paste wordcount'
+                            ],
+                            toolbar:
+                                'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent image | help'
+                        }}
+                        onChange={(e) => setArticle(e.target.getContent())}
+                    />
+                    {/*<textarea value={article} onChange={(e) => setArticle(e.target.value)}/>*/}
 
                     <div className="btnContainer">
                         <button onClick={addNote}>Salvar</button>

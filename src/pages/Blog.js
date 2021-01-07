@@ -12,7 +12,7 @@ export default function Blog() {
         return ref.get().then(querySnapshot => {
             const list = [];
             querySnapshot.forEach(doc => {
-                const { author, date, title, subtitle, article, call} = doc.data();
+                const { author, date, title, subtitle, article, call, tag} = doc.data();
                 list.push({
                     id: doc.id,
                     author,
@@ -20,34 +20,47 @@ export default function Blog() {
                     title,
                     subtitle,
                     article,
-                    call
+                    call,
+                    tag
                 });
             });
 
             setNotes(list);
 
-            console.log("Data", notes);
-
             if (loading) {
                 setLoading(false);
             }
         });
-    }, []);
+    });
     if (loading) {
         return null;
     }
 
+    function adicionaZero(numero){
+        if (numero <= 9)
+            return "0" + numero;
+        else
+            return numero;
+    }
+
     const posts = notes.map(post => {
+
+        let date = new Date(post.date);
+        let dataFormatada = ((adicionaZero(date.getDate().toString())) + "/" + (adicionaZero(date.getMonth()+1)) + "/" + date.getFullYear());
+
         return (
             <div className="post-listing" key={post.id}>
-                <h1>{post.title}</h1>
+                <span className="tag">{post.tag}</span>
+                <h1><b>{post.title}</b></h1>
                 <h5>{post.subtitle}</h5>
                 <hr/>
                 <span>{post.call}</span>
-                <hr/>
-                <h5>Post publicado por: {post.author}</h5>
-                <h5>Data de publicação: {post.date}</h5>
-                <Link to={"/post/" + post.id} key={post.id}><button>Leia Maix</button></Link>
+                <br/><br/>
+                <h5>Por: {post.author} em {dataFormatada}</h5>
+                <Link to={"/post/" + post.id} key={post.id}><button className="more">Leia Mais</button></Link>
+                <div className="spacer">
+                    <hr/>
+                </div>
             </div>
         );
     });
